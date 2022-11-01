@@ -22,6 +22,7 @@ while True:
         sql="INSERT INTO `emp`(`name`, `pin`) VALUES (%s,%s)"
         data=(name,pin)
         mycursor.execute(sql,data)
+        
         mydb.commit()
     elif(choice==2):
         print("view student")
