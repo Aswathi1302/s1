@@ -1,3 +1,10 @@
+import mysql.connector
+mydb= mysql.connector.connect(host= 'localhost',user='root',password='',database='employes')
+mycursor= mydb.cursor()
+
+from secrets import choice
+
+
 while True:
     print("select an option from the menu")
     print("1. add student")
@@ -11,9 +18,12 @@ while True:
     if(choice==1):
         print("student enter selected")
         name=input("enter a name")
-        rollno=input("enter rollno")
-        admNo=input("enter addmission number")
-        college=input("enter college ")
+        pin=input("enter pin")
+        sql="INSERT INTO `emp`(`name`, `pin`) VALUES (%s,%s)"
+        data=(name,pin)
+        mycursor.execute(sql,data)
+        
+        mydb.commit()
     elif(choice==2):
         print("view student")
     elif(choice==3):
@@ -23,4 +33,4 @@ while True:
     elif(choice==5):
         print("delet student")    
     elif(choice==6):
-        break                
+        break                              
